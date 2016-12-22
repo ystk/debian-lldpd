@@ -1,0 +1,59 @@
+Source: lldpd
+Section: net
+Priority: optional
+Maintainer: Vincent Bernat <bernat@debian.org>
+Build-Depends: debhelper (>= 9),
+               autotools-dev,
+               dh-autoreconf,
+               libsnmp-dev,
+               libpci-dev,
+               libxml2-dev,
+               libjansson-dev,
+               libevent-dev,
+               libreadline-dev,
+               libbsd-dev,
+               pkg-config,
+               check,
+               dh-systemd (>= 1.5)
+Standards-Version: 3.9.8
+Vcs-Browser: https://anonscm.debian.org/gitweb/?p=collab-maint/lldpd.git
+Vcs-Git: https://alioth.debian.org/anonscm/git/collab-maint/lldpd.git
+Homepage: http://vincentbernat.github.com/lldpd/
+
+Package: lldpd
+Architecture: linux-any kfreebsd-any
+Depends: ${shlibs:Depends}, ${misc:Depends}, adduser, lsb-base
+Suggests: snmpd
+Description: implementation of IEEE 802.1ab (LLDP)
+ LLDP is an industry standard protocol designed to supplant
+ proprietary Link-Layer protocols such as Extreme's EDP (Extreme
+ Discovery Protocol) and CDP (Cisco Discovery Protocol). The goal of
+ LLDP is to provide an inter-vendor compatible mechanism to deliver
+ Link-Layer notifications to adjacent network devices.
+ .
+ This implementation provides LLDP sending and reception, supports
+ VLAN and includes an SNMP subagent that can interface to an SNMP
+ agent through AgentX protocol.
+ .
+ This daemon is also able to deal with CDP, SONMP, FDP and EDP
+ protocol. It also handles LLDP-MED extension.
+
+Package: liblldpctl-dev
+Section: libdevel
+Architecture: linux-any kfreebsd-any
+Depends: lldpd (= ${binary:Version}), ${misc:Depends}
+Description: implementation of IEEE 802.1ab (LLDP) - development files
+ LLDP is an industry standard protocol designed to supplant
+ proprietary Link-Layer protocols such as Extreme's EDP (Extreme
+ Discovery Protocol) and CDP (Cisco Discovery Protocol). The goal of
+ LLDP is to provide an inter-vendor compatible mechanism to deliver
+ Link-Layer notifications to adjacent network devices.
+ .
+ This implementation provides LLDP sending and reception, supports
+ VLAN and includes an SNMP subagent that can interface to an SNMP
+ agent through AgentX protocol.
+ .
+ This daemon is also able to deal with CDP, SONMP, FDP and EDP
+ protocol. It also handles LLDP-MED extension.
+ .
+ This package contains development files to develop clients for lldpd.
